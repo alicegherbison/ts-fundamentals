@@ -1,21 +1,42 @@
-export class AddressBook {
-  contacts = [];
+interface Person {
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
+  salutation?: string;
+  phones?: {
+    [phoneName: string]: string;
+  };
+  addresses?: {
+    [addressName: string]: {
+      houseNumber: number;
+      street: string;
+      city: string;
+      state: string;
+      postalCode: number;
+      country: string;
+    };
+  };
+  email?: string;
+}
 
-  addContact(contact) {
+export class AddressBook {
+  contacts: Person[] = [];
+
+  addContact(contact: Person) {
     this.contacts.push(contact);
   }
 
-  findContactByName(filter) {
-    return this.contacts.filter(c => {
+  findContactByName(filter: { firstName?: string; lastName?: string }) {
+    return this.contacts.filter(contact => {
       if (
         typeof filter.firstName !== "undefined" &&
-        c.firstName !== filter.firstName
+        contact.firstName !== filter.firstName
       ) {
         return false;
       }
       if (
         typeof filter.lastName !== "undefined" &&
-        c.lastName !== filter.lastName
+        contact.lastName !== filter.lastName
       ) {
         return false;
       }
@@ -24,7 +45,7 @@ export class AddressBook {
   }
 }
 
-export function formatDate(date) {
+export function formatDate(date: Date) {
   return (
     date
       .toISOString()
@@ -33,13 +54,13 @@ export function formatDate(date) {
   );
 }
 
-function getFullName(contact) {
+function getFullName(contact: Person) {
   return [contact.firstName, contact.middleName, contact.lastName]
     .filter(Boolean)
     .join(" ");
 }
 
-export function getVcardText(contact, date = new Date()) {
+export function getVcardText(contact: Person, date = new Date()) {
   const parts = [
     "BEGIN:VCARD",
     "VERSION:2.1",
