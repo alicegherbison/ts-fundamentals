@@ -49,7 +49,7 @@ console.log(sum(3, 4, 6)); // 13
 function contactPeople(method: "email", ...people: HasEmail[]): void;
 function contactPeople(method: "phone", ...people: HasPhoneNumber[]): void;
 
-// "function implementation" (underlying implementation - needs to be general enough to meet the needs of the signatures above it)
+// "function implementation" (underlying implementation - needs to be general enough to meet the needs of all signatures above it). Can add fallbacks if lots and lots of signatures.
 function contactPeople(
   method: "email" | "phone",
   ...people: (HasEmail | HasPhoneNumber)[]
