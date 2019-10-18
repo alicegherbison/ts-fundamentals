@@ -61,8 +61,6 @@ function contactPeople(
   }
 }
 
-contact;
-
 // ✅ email works
 contactPeople("email", { name: "foo", email: "" });
 
