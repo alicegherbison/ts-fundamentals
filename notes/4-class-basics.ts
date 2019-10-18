@@ -4,17 +4,17 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
 
 /**
  * (1) Classes work similarly to what you're used to seeing in JS
- * -   They can "implement" interfaces
+ * -   They can "implement" interfaces - describes a class aligning with a particular interface
  */
 
-// export class Contact implements HasEmail {
-//   email: string;
-//   name: string;
-//   constructor(name: string, email: string) {
-//     this.email = email;
-//     this.name = name;
-//   }
-// }
+export class Contact implements HasEmail {
+  email: string;
+  name: string;
+  constructor(name: string, email: string) {
+    this.email = email;
+    this.name = name;
+  }
+}
 
 /**
  * (2) This looks a little verbose -- we have to specify the words "name" and "email" 3x.
@@ -25,15 +25,15 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
  * (3) Access modifier keywords - "who can access this thing"
  *
  * - public - everyone
- * - protected - me and subclasses
- * - private - only me
+ * - protected - me (the instance) and (any instance of a) subclasses
+ * - private - only me (only that class, subclass can't see private method or field)
  */
 
-// class ParamPropContact implements HasEmail {
-//   constructor(public name: string, public email: string = "no email") {
-//     // nothing needed
-//   }
-// }
+class ParamPropContact implements HasEmail {
+  constructor(public name: string, public email: string = "no email") {
+    // nothing needed
+  }
+}
 
 /**
  * (4) Class fields can have initializers (defaults)
