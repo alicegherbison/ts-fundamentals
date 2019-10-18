@@ -42,7 +42,7 @@ This is the example project used for the <a title="Mike.Works" href="https://mik
 
 Make sure your system is set up with
 
-- [TypeScript](https://www.typescriptlang.org/#download-links)
+- _Node.js_ - using [Volta](http://volta.sh) makes setup extremely easy!
 - [Yarn](https://yarnpkg.com/en/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [TypeScript](https://www.typescriptlang.org/index.html#download-links) (should be globally installed)
