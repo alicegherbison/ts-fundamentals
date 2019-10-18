@@ -30,7 +30,12 @@ export class Contact implements HasEmail {
  */
 
 class ParamPropContact implements HasEmail {
-  constructor(public name: string, public email: string = "no email") {
+  constructor(
+    // adding an access modifier's keyword before our constructor's arguments we can create the equivalent setup to above
+    // this means - take an argument in the constructor AND a field of the same name should exist on the instance, and when you receive it in the constructor, you should place it on the instance
+    public name: string,
+    public email: string = "no email"
+  ) {
     // nothing needed
   }
 }
@@ -38,43 +43,55 @@ class ParamPropContact implements HasEmail {
 /**
  * (4) Class fields can have initializers (defaults)
  */
-// class OtherContact implements HasEmail, HasPhoneNumber {
-//   protected age: number = 0;
-//   // private password: string;
-//   constructor(public name: string, public email: string, public phone: number) {
-//     // () password must either be initialized like this, or have a default value
-//     // this.password = Math.round(Math.random() * 1e14).toString(32);
-//   }
-// }
+class OtherContact implements HasEmail, HasPhoneNumber {
+  protected age: number = 0; // default value, if not set within constructor. could also be 'readonly' - can't write to it. but does nothing in terms of preventing rights to this value - just a linting for using type information
+  private passwordVal: string | undefined;
+  constructor(public name: string, public email: string, public phone: number) {
+    // () password must either be initialized like this, or have a default value
+  }
+
+  // es5 getter
+  private get password(): string {
+    if (!this.passwordVal) {
+      this.passwordVal = Math.round(Math.random() * 1e14).toString(32);
+    }
+
+    return this.passwordVal;
+  }
+
+  async init() {
+    this.password;
+  }
+}
 
 /**
  * (5) TypeScript even allows for abstract classes, which have a partial implementation
  */
 
-// abstract class AbstractContact implements HasEmail, HasPhoneNumber {
-//   public abstract phone: number; // must be implemented by non-abstract subclasses
+abstract class AbstractContact implements HasEmail, HasPhoneNumber {
+  public abstract phone: number; // must be implemented by non-abstract subclasses
 
-//   constructor(
-//     public name: string,
-//     public email: string // must be public to satisfy HasEmail
-//   ) {}
+  constructor(
+    public name: string,
+    public email: string // must be public to satisfy HasEmail
+  ) {}
 
-//   abstract sendEmail(): void; // must be implemented by non-abstract subclasses
-// }
+  abstract sendEmail(): void; // must be implemented by non-abstract subclasses
+}
 
 /**
  * (6) implementors must "fill in" any abstract methods or properties
  */
-// class ConcreteContact extends AbstractContact {
-//   constructor(
-//     public phone: number, // must happen before non property-parameter arguments
-//     name: string,
-//     email: string
-//   ) {
-//     super(name, email);
-//   }
-//   sendEmail() {
-//     // mandatory!
-//     console.log("sending an email");
-//   }
-// }
+class ConcreteContact extends AbstractContact {
+  constructor(
+    public phone: number, // must happen before non property-parameter arguments
+    name: string,
+    email: string
+  ) {
+    super(name, email);
+  }
+  sendEmail() {
+    // mandatory!
+    console.log("sending an email");
+  }
+}
