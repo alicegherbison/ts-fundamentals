@@ -4,10 +4,10 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
 /**
  * (1) Type aliases allow us to give a type a name
  */
-// type StringOrNumber = string | number;
+type StringOrNumber = string | number;
 
-// // this is the ONLY time you'll see a type on the RHS of assignment
-// type HasName = { name: string };
+// this is the ONLY time you'll see a type on the RHS of assignment - this is completely typespace - will not compile to js at all
+type HasName = { name: string };
 
 // NEW in TS 3.7: Self-referencing types!
 type NumVal = 1 | 2 | 3 | NumVal[];
@@ -17,17 +17,19 @@ type NumVal = 1 | 2 | 3 | NumVal[];
  * (2) Interfaces can extend from other interfaces
  */
 
-// export interface HasInternationalPhoneNumber extends HasPhoneNumber {
-//   countryCode: string;
-// }
+// extends is used for inheritance of similar things - interfaces extend from interfaces, classes extend from classes
+export interface HasInternationalPhoneNumber extends HasPhoneNumber {
+  countryCode: string;
+}
 
 /**
  * (3) they can also be used to describe call signatures
  */
 
-// interface ContactMessenger1 {
-//   (contact: HasEmail | HasPhoneNumber, message: string): void;
-// }
+// interfaces can describe objects, functions and arrays = js values that extend from the js object type
+interface ContactMessenger1 {
+  (contact: HasEmail | HasPhoneNumber, message: string): void;
+}
 
 // type ContactMessenger2 = (
 //   contact: HasEmail | HasPhoneNumber,
