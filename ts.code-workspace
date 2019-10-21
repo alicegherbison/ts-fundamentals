@@ -31,11 +31,11 @@
       "typescript": "node_modules/.bin/ts-node"
     },
     "workbench.colorCustomizations": {
-      "activityBar.background": "#ff94ae",
+      "activityBar.background": "#ff6188",
       "activityBar.foreground": "#15202b",
       "activityBar.inactiveForeground": "#15202b99",
-      "activityBarBadge.background": "#1f8000",
-      "activityBarBadge.foreground": "#e7e7e7",
+      "activityBarBadge.background": "#3fff00",
+      "activityBarBadge.foreground": "#15202b",
       "titleBar.activeBackground": "#ff6188",
       "titleBar.inactiveBackground": "#ff618899",
       "titleBar.activeForeground": "#15202b",
@@ -43,10 +43,10 @@
       "statusBar.background": "#ff6188",
       "statusBarItem.hoverBackground": "#ff2e62",
       "statusBar.foreground": "#15202b",
-      "panel.border": "#ff94ae",
-      "sideBar.border": "#ff94ae",
-      "editorGroup.border": "#ff94ae",
-      "tab.activeBorder": "#ff94ae"
+      "panel.border": "#ff6188",
+      "sideBar.border": "#ff6188",
+      "editorGroup.border": "#ff6188",
+      "tab.activeBorder": "#ff6188"
     },
     "peacock.affectTabActiveBorder": true,
     "peacock.affectAccentBorders": true,
